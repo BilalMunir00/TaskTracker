@@ -1,0 +1,100 @@
+﻿ @page "/"
+
+<h1>Task Tracker</h1>
+@if (tasks.Count > 0)
+{
+     // Add your code here
+}
+else
+{
+    <p>No tasks to display.</p>
+}
+<br/>
+<br/>
+<h1>Add Task</h1>
+<div class="mycontainer">
+<div class="form-group">
+    <label for="taskName">Task Name:</label>
+    <input class="form-control" id="taskName" @bind="newTask.Name" />
+</div>
+
+<div class="form-group">
+    <label for="taskDescription">Task Description:</label>
+    <textarea class="form-control" id="taskDescription" @bind="newTask.Description"></textarea>
+</div>
+
+<div class="form-group">
+    <label for="taskPriority">Task Priority:</label>
+    <select class="form-control" id="taskPriority" @bind="newTask.Priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="taskDueDate">Task Due Date:</label>
+    <input type="date" class="form-control" id="taskDueDate" @bind="newTask.DueDate" />
+</div>
+
+<div class="form-group">
+    <label for="taskStatus">Task Status:</label>
+    <select class="form-control" id="taskStatus" @bind="newTask.Status">
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select>
+</div>
+<br/>
+<button class="btn btn-primary" @onclick="AddTask">Add Task</button>
+</div>
+@code {
+
+    // Add your code here
+
+    
+    private List<TaskItem> tasks = new List<TaskItem>()
+    {
+        new TaskItem { Name = "Finish Blazor project", Description = "Complete the task tracking system project using Blazor", Priority = "High", DueDate = DateTime.Now.AddDays(7), Status = "In Progress" },
+        new TaskItem { Name = "Submit report", Description = "Submit report to manager", Priority = "Medium", DueDate = DateTime.Now.AddDays(3), Status = "Not Started" },
+        new TaskItem { Name = "Buy groceries", Description = "Buy groceries for the week", Priority = "Low", DueDate = DateTime.Now.AddDays(1), Status = "Completed" }
+    };
+    
+    private TaskItem newTask = new TaskItem();
+
+    private class TaskItem
+    {
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string? Priority { get; set; }
+        public DateTime DueDate { get; set; }
+        public string? Status { get; set; }
+    }
+
+    private void AddTask()
+    {
+             // Add the new task to the list of tasks
+        tasks.Add(newTask);
+
+        // Clear the form fields
+    }
+
+private void DeleteTask(TaskItem task)
+{
+    // Remove the specified task from the list of tasks
+    tasks.Remove(task);
+}
+
+private void UpdateTask(TaskItem task)
+{
+    // Find the index of the specified task in the list of tasks
+    int index = tasks.IndexOf(task);
+
+    // Update the task's properties
+    tasks[index].Name = task.Name;
+    tasks[index].Description = task.Description;
+    tasks[index].Priority = task.Priority;
+    tasks[index].DueDate = task.DueDate;
+    tasks[index].Status = task.Status;
+}
+}
