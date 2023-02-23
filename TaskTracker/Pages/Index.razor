@@ -1,0 +1,24 @@
+﻿@page "/"
+
+<h1>Task Tracker</h1>
+
+
+@code {
+    private List<TaskItem> tasks = new()
+    {
+        new TaskItem { Name = "Finish Project Proposal", Description = "Write proposal for new project", Priority = "High", DueDate = new DateTime(2023, 3, 1), Status = "Incomplete" },
+        new TaskItem { Name = "Research Competitors", Description = "Gather information on competitors", Priority = "Medium", DueDate = new DateTime(2023, 3, 10), Status = "Incomplete" },
+        new TaskItem { Name = "Create Wireframes", Description = "Sketch out wireframes for new project", Priority = "High", DueDate = new DateTime(2023, 3, 15), Status = "Incomplete" },
+        new TaskItem { Name = "Develop MVP", Description = "Build minimum viable product for new project", Priority = "High", DueDate = new DateTime(2023, 3, 30), Status = "Incomplete" },
+        new TaskItem { Name = "Test and Deploy", Description = "Test and deploy new project", Priority = "High", DueDate = new DateTime(2023, 4, 15), Status = "Incomplete" }
+    };
+
+    private class TaskItem
+    {
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string? Priority { get; set; }
+        public DateTime DueDate { get; set; }
+        public string? Status { get; set; }
+    }
+}
