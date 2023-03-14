@@ -1,17 +1,24 @@
-@if(true){
-<table class="table">
-    <thead>
-        <tr></tr>
-    </thead>
-    <tbody>
-
-    </tbody>
-</table>
+@if (showTable)
+{
+      <table class="table">
+      <thead>
+          <tr> </tr>
+      </thead>
+      <tbody>
+          
+      </tbody>
+  </table>
 }
-<button class="btn btn-dark mr-2">Show Task</button>
-<button class="btn btn-dark mr-2">Hide Task</button>
+<button class="btn btn-dark mr-2">
+      Show Task
+</button>
+<button class="btn btn-dark mr-2">
+      Hide Task
+</button>
+  
 @code{
+      [Parameter]
+      public bool showTable { get; set; }
 
-//Add your code here
-
+      //Write your code here
 }
