@@ -60,7 +60,7 @@ else
         new TaskItem { Name = "Buy groceries", Description = "Buy groceries for the week", Priority = "Low", DueDate = DateTime.Now.AddDays(1), Status = "Completed" }
     };
     
-    private TaskItem newTask = new TaskItem();
+    private TaskItem newTask = new TaskItem(){Name = " ", Description = " ", Priority = "High", DueDate = DateTime.Now.AddDays(7), Status = "Not Started"};
 
     private class TaskItem
     {
@@ -73,10 +73,14 @@ else
 
     private void AddTask()
     {
-             // Add the new task to the list of tasks
+            // Add the new task to the list of tasks
+      if (!string.IsNullOrWhiteSpace(newTask.Name))
+      {
         tasks.Add(newTask);
 
         // Clear the form fields
+        newTask = new TaskItem();
+      }
     }
 
 private void DeleteTask(TaskItem task)
